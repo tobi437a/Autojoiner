@@ -193,11 +193,8 @@ elseif game.PlaceId == mm2Id then
     
     task.spawn(selectDevice)
     
-    local loadingScreen = game:GetService('ReplicatedFirst'):WaitForChild('UISelector'):WaitForChild('LoadingS2'):WaitForChild('Loading')
-    while loadingScreen.Enabled do
-        wait(1) -- We wait while the loading screen is active
-    end
-    local waittime = delay or 2
+    local mainGui = game.Players.LocalPlayer:WaitForChild('PlayerGui', 30):WaitForChild('MainGUI', 30) -- Wait for main gui so we know we are loaded
+    local waittime = delay or 3
     wait(waittime) -- Small delay to account for ping and stuff
     local notused = game:GetService('ReplicatedStorage'):WaitForChild('Trade'):WaitForChild('AcceptRequest') -- Just to make sure we are fully loaded before chatting (or it will bug)
     game:GetService('TextChatService').TextChannels.RBXGeneral:SendAsync('hi')
